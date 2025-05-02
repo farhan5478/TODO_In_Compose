@@ -1,8 +1,10 @@
 package com.appvibe.todo.presentation.onBoading
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -19,10 +21,19 @@ fun IntroScreen(navController: NavHostController = rememberNavController()) {
 
     LaunchedEffect(Unit) {
         delay(2500)
-        navController.navigate(OnBoardDestination.STEP_1)
+        navController.navigate(OnBoardDestination.STEP_1) {
+            popUpTo(OnBoardDestination.INTRO) {
+                inclusive = true
+            }
+        }
     }
 
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+        contentAlignment = Alignment.Center
+    ) {
         Image(painter = painterResource(R.drawable.ic_todo), contentDescription = null)
     }
 }

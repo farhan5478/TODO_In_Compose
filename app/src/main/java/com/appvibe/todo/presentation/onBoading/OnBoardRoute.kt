@@ -15,13 +15,19 @@ object OnBoardDestination {
 }
 
 @Composable
-fun OnBoardNavGraph(navController: NavHostController){
+fun OnBoardNavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = OnBoardDestination.INTRO) {
         composable(route = OnBoardDestination.INTRO) {
             IntroScreen(navController)
         }
         composable(route = OnBoardDestination.STEP_1) {
-//            Step1Screen(navController)
+            OnBoardScreenOne(navController)
+        }
+        composable(route = OnBoardDestination.STEP_2) {
+            OnBoardScreenTwo(navController)
+        }
+        composable(route = OnBoardDestination.STEP_3) {
+            OnBoardScreenThree(navController)
         }
     }
 
