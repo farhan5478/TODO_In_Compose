@@ -6,6 +6,8 @@
     <string name="txt_routine_des">In Uptodo  you can create your personalized routine to stay productive</string>
     <string name="txt_organize_task">Organize your tasks</string>
     <string name="txt_organize_des">You can organize your daily tasks by adding your tasks into separate categories</string>
+    <string name="txt_welcome_todo">Welcome to UpTodo</string>
+    <string name="txt_login_to_account">Please login to your account or create new account to continue</string>
     <string name="action_skip">SKIP</string>
     <string name="action_back">BACK</string>
     <string name="action_next">NEXT</string>"
