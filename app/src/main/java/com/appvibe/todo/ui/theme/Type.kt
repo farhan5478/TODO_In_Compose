@@ -25,12 +25,12 @@ val Typography = Typography(
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
+    labelMedium = TextStyle(
+        fontFamily = FontFamily(Font(R.font.lato_regular)),
         fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.sp
     ),
     titleSmall = TextStyle(
         fontFamily = FontFamily(Font(R.font.lato_light)),
@@ -45,5 +45,6 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 25.sp,
         letterSpacing = 0.sp
-    )
+    ),
+
 )

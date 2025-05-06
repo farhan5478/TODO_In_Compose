@@ -8,6 +8,8 @@
     <string name="txt_organize_des">You can organize your daily tasks by adding your tasks into separate categories</string>
     <string name="txt_welcome_todo">Welcome to UpTodo</string>
     <string name="txt_login_to_account">Please login to your account or create new account to continue</string>
+   <string name="txt_enter_your_user_name">Enter your Username</string>
+   <string name="txt_enter_your_password">Enter your Password</string>
     <string name="action_skip">SKIP</string>
     <string name="action_back">BACK</string>
     <string name="action_next">NEXT</string>"
@@ -16,8 +18,15 @@
     <string name="action_create_account">CREATE ACCOUNT</string>
     <string name="txt_user_name">Username</string>
     <string name="txt_password">Password</string>
+    <string name="txt_confirms_password">Confirm Password</string>
     <string name="txt_login">Login</string>
+    <string name="txt_register">Register</string>
     <string name="action_login_with_google">Login With Google</string>"
     <string name="action_login_with_apple">Login With Apple</string>"
-    <string name="action_do_not_have_account">Don\'t have an account?Register</string>"
+    <string name="action_do_not_have_account">Don\'t have an account?</string>"
+    <string name="action_register">Register</string>
+    <string name="action_register_with_google">Register With Google</string>"
+    <string name="action_register_with_apple">Register With Apple</string>"
+    <string name="txt_already_have_account">Already have an account?</string>
+
 </resources>

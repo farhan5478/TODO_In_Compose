@@ -3,10 +3,7 @@ package com.appvibe.todo.presentation.auth
 import android.R.attr.bottom
 import android.R.attr.end
 import android.R.attr.height
-import android.R.attr.text
-import android.R.attr.top
 import android.util.Log.d
-import android.util.Log.e
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,15 +23,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.SearchBarDefaults.InputField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -51,15 +45,13 @@ import com.appvibe.todo.R
 import com.appvibe.todo.presentation.DividerWithText
 import com.appvibe.todo.presentation.EmailInputField
 import com.appvibe.todo.presentation.PasswordInputField
-import com.appvibe.todo.presentation.TextButton
 import com.appvibe.todo.ui.theme.Dimens
 import com.appvibe.todo.ui.theme.Purple60
 import com.appvibe.todo.ui.theme.TODOTheme
-import com.appvibe.todo.ui.theme.White
 import com.appvibe.todo.ui.theme.White80
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun RegisterScreen(navController: NavController) {
     val statusBarPadding = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottomNavigationBarPadding =
         WindowInsets.navigationBars.asPaddingValues().calculateTopPadding()
@@ -69,11 +61,12 @@ fun LoginScreen(navController: NavController) {
         val screenCaption = createRefFor("screenCaption")
         val username = createRefFor("username")
         val password = createRefFor("password")
-        val loginButton = createRefFor("loginButton")
+        val confirmPassword = createRefFor("confirmPassword")
+        val registerButton = createRefFor("registerButton")
         val orDivider = createRefFor("orDivider")
-        val loginWithGoogle = createRefFor("loginWithGoogle")
-        val loginWithApple = createRefFor("loginWithApple")
-        val registerRow = createRefFor("registerRow")
+        val registerWithGoogle = createRefFor("registerWithGoogle")
+        val registerWithApple = createRefFor("registerWithApple")
+        val loginRow = createRefFor("loginRow")
 
         constrain(toolbarBackIcon) {
             top.linkTo(parent.top, margin = statusBarPadding)
@@ -86,7 +79,7 @@ fun LoginScreen(navController: NavController) {
         }
 
         constrain(username) {
-            bottom.linkTo(password.top, margin = Dimens.marginLarge)
+            top.linkTo(screenCaption.bottom, margin = Dimens.marginExtraLarge)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             width = Dimension.fillToConstraints
@@ -94,15 +87,24 @@ fun LoginScreen(navController: NavController) {
         }
 
         constrain(password) {
-            bottom.linkTo(loginButton.top, margin = 62.dp)
+            top.linkTo(username.bottom, margin = Dimens.marginLarge)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             width = Dimension.fillToConstraints
             height = Dimension.value(dp = 80.dp)
         }
 
-        constrain(loginButton) {
-            bottom.linkTo(orDivider.top, margin = 50.dp)
+        constrain(confirmPassword) {
+            top.linkTo(password.bottom, margin = Dimens.marginLarge)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            width = Dimension.fillToConstraints
+            height = Dimension.value(dp = 80.dp)
+        }
+
+
+        constrain(registerButton) {
+           top.linkTo(confirmPassword.bottom, margin = 55.dp)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             width = Dimension.fillToConstraints
@@ -110,30 +112,30 @@ fun LoginScreen(navController: NavController) {
         }
 
         constrain(orDivider) {
-            bottom.linkTo(loginWithGoogle.top, margin = 50.dp)
+            top.linkTo(registerButton.bottom, margin = Dimens.marginExtraLarge)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             width = Dimension.fillToConstraints
             height = Dimension.wrapContent
         }
 
-        constrain(loginWithGoogle) {
-            bottom.linkTo(loginWithApple.top, margin = Dimens.marginMedium)
+        constrain(registerWithGoogle) {
+            top.linkTo(orDivider.bottom, margin = Dimens.marginExtraLarge)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             width = Dimension.fillToConstraints
             height = Dimension.value(dp = 52.dp)
         }
 
-        constrain(loginWithApple) {
-            bottom.linkTo(registerRow.top, margin = 80.dp)
+        constrain(registerWithApple) {
+            top.linkTo(registerWithGoogle.bottom, margin = Dimens.marginLarge)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             width = Dimension.fillToConstraints
             height = Dimension.value(dp = 52.dp)
         }
 
-        constrain(registerRow) {
+        constrain(loginRow) {
             bottom.linkTo(parent.bottom, margin = bottomNavigationBarPadding)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
@@ -161,7 +163,7 @@ fun LoginScreen(navController: NavController) {
             Image(painter = painterResource(R.drawable.ic_back), contentDescription = null)
         }
         Text(
-            text = stringResource(R.string.txt_login),
+            text = stringResource(R.string.txt_register),
             modifier = Modifier.layoutId("screenCaption"),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.titleLarge
@@ -187,10 +189,20 @@ fun LoginScreen(navController: NavController) {
             d("TAG", "LoginScreen: $it")
         }
 
+        PasswordInputField(
+            modifier = Modifier.layoutId("confirmPassword"),
+            focusManager = focusManager,
+            labelId = R.string.txt_confirms_password,
+            placeHolder = R.string.txt_enter_your_password,
+            value = ""
+        ) {
+            d("TAG", "LoginScreen: $it")
+        }
+
         Button(onClick = {
 
 
-        }, modifier = Modifier.layoutId("loginButton"), shape = RoundedCornerShape(5.dp)) {
+        }, modifier = Modifier.layoutId("registerButton"), shape = RoundedCornerShape(5.dp)) {
             Text(
                 text = stringResource(R.string.action_login),
                 color = MaterialTheme.colorScheme.onBackground,
@@ -205,7 +217,7 @@ fun LoginScreen(navController: NavController) {
             onClick = {
 
             },
-            modifier = Modifier.layoutId("loginWithGoogle"),
+            modifier = Modifier.layoutId("registerWithGoogle"),
             shape = RoundedCornerShape(5.dp),
             border = BorderStroke(width = 1.dp, color = Purple60)
         ) {
@@ -233,7 +245,7 @@ fun LoginScreen(navController: NavController) {
             onClick = {
 
             },
-            modifier = Modifier.layoutId("loginWithApple"),
+            modifier = Modifier.layoutId("registerWithApple"),
             shape = RoundedCornerShape(5.dp),
             border = BorderStroke(width = 1.dp, color = Purple60),
 
@@ -250,7 +262,7 @@ fun LoginScreen(navController: NavController) {
                     modifier = Modifier.size(24.dp)
                 )
                 Text(
-                    text = stringResource(R.string.action_login_with_apple),
+                    text = stringResource(R.string.action_register_with_apple),
                     color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(start = 10.dp)
@@ -260,12 +272,12 @@ fun LoginScreen(navController: NavController) {
         }
 
         Row(
-            modifier = Modifier.layoutId("registerRow"),
+            modifier = Modifier.layoutId("loginRow"),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = stringResource(R.string.action_do_not_have_account),
+                text = stringResource(R.string.txt_already_have_account),
                 color = White80,
                 style = MaterialTheme.typography.labelSmall,
                 textAlign = TextAlign.Center
@@ -277,7 +289,7 @@ fun LoginScreen(navController: NavController) {
                 }, contentPadding = PaddingValues(start = 0.dp)
             ) {
                 Text(
-                    text = stringResource(R.string.action_register),
+                    text = stringResource(R.string.txt_login),
                     color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typography.labelSmall
                 )
@@ -291,8 +303,8 @@ fun LoginScreen(navController: NavController) {
 
 @Composable
 @Preview
-fun PreviewLoginScreen() {
+fun PreviewRegisterScreen() {
     TODOTheme {
-        LoginScreen(navController = rememberNavController())
+        RegisterScreen(navController = rememberNavController())
     }
 }

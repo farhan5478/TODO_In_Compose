@@ -1,6 +1,5 @@
 package com.appvibe.todo.presentation.onBoading
 
-import android.R.attr.action
 import android.app.Activity
 import androidx.activity.compose.LocalActivity
 import androidx.annotation.DrawableRes
@@ -19,7 +18,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
