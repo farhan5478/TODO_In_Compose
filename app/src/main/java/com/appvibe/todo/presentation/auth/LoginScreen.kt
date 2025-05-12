@@ -1,12 +1,6 @@
 package com.appvibe.todo.presentation.auth
 
-import android.R.attr.bottom
-import android.R.attr.end
-import android.R.attr.height
-import android.R.attr.text
-import android.R.attr.top
 import android.util.Log.d
-import android.util.Log.e
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,15 +20,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.SearchBarDefaults.InputField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -51,11 +42,9 @@ import com.appvibe.todo.R
 import com.appvibe.todo.presentation.DividerWithText
 import com.appvibe.todo.presentation.EmailInputField
 import com.appvibe.todo.presentation.PasswordInputField
-import com.appvibe.todo.presentation.TextButton
 import com.appvibe.todo.ui.theme.Dimens
 import com.appvibe.todo.ui.theme.Purple60
 import com.appvibe.todo.ui.theme.TODOTheme
-import com.appvibe.todo.ui.theme.White
 import com.appvibe.todo.ui.theme.White80
 
 @Composable

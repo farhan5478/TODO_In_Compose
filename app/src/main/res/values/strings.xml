@@ -21,12 +21,17 @@
     <string name="txt_confirms_password">Confirm Password</string>
     <string name="txt_login">Login</string>
     <string name="txt_register">Register</string>
+    <string name="txt_index">Index</string>
     <string name="action_login_with_google">Login With Google</string>"
     <string name="action_login_with_apple">Login With Apple</string>"
     <string name="action_do_not_have_account">Don\'t have an account?</string>"
     <string name="action_register">Register</string>
     <string name="action_register_with_google">Register With Google</string>"
     <string name="action_register_with_apple">Register With Apple</string>"
+    <string name="action_index">Index</string>
+    <string name="action_calender">Calendar</string>
+    <string name="action_focus">Focus</string>
+    <string name="action_Profile">Profile</string>
     <string name="txt_already_have_account">Already have an account?</string>
 
 </resources>
