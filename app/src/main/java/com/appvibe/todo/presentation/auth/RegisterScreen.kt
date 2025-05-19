@@ -1,8 +1,5 @@
 package com.appvibe.todo.presentation.auth
 
-import android.R.attr.bottom
-import android.R.attr.end
-import android.R.attr.height
 import android.util.Log.d
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -42,9 +39,9 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.appvibe.todo.R
-import com.appvibe.todo.presentation.DividerWithText
-import com.appvibe.todo.presentation.EmailInputField
-import com.appvibe.todo.presentation.PasswordInputField
+import com.appvibe.todo.presentation.home.components.DividerWithText
+import com.appvibe.todo.presentation.home.components.EmailInputField
+import com.appvibe.todo.presentation.home.components.PasswordInputField
 import com.appvibe.todo.ui.theme.Dimens
 import com.appvibe.todo.ui.theme.Purple60
 import com.appvibe.todo.ui.theme.TODOTheme

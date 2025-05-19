@@ -3,6 +3,7 @@ package com.appvibe.todo.presentation.home.navigation
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.appvibe.todo.R
+import com.appvibe.todo.presentation.home.components.BottomItemModel
 
 object OnBottomNavigationRoute {
     const val HOME = "home"
@@ -11,9 +12,7 @@ object OnBottomNavigationRoute {
     const val PROFILE = "profile"
 }
 
-data class BottomItemModel(
-    val route: String, val selectedIcon: Int, val unselectedIcon: Int, val label: Int
-)
+
 
 class BottomItemNavigationActions(private val navController: NavHostController) {
 
@@ -30,26 +29,3 @@ class BottomItemNavigationActions(private val navController: NavHostController) 
 
 }
 
-val BottomNavItemsList = listOf(
-    BottomItemModel(
-        route = OnBottomNavigationRoute.HOME,
-        selectedIcon = R.drawable.baseline_home,
-        unselectedIcon = R.drawable.outline_home,
-        label = R.string.action_index
-    ), BottomItemModel(
-        route = OnBottomNavigationRoute.CALENDER,
-        selectedIcon = R.drawable.baseline_calendar,
-        unselectedIcon = R.drawable.outline_calendar,
-        label = R.string.action_calender
-    ), BottomItemModel(
-        route = OnBottomNavigationRoute.FOCUS,
-        selectedIcon = R.drawable.baseline_clock,
-        unselectedIcon = R.drawable.outline_clock,
-        label = R.string.action_focus
-    ), BottomItemModel(
-        route = OnBottomNavigationRoute.PROFILE,
-        selectedIcon = R.drawable.baseline_person,
-        unselectedIcon = R.drawable.outline_person,
-        label = R.string.action_Profile
-    )
-)
