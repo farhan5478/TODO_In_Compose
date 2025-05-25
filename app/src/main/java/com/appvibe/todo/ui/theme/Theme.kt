@@ -2,6 +2,7 @@ package com.appvibe.todo.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import android.view.Window
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
@@ -55,6 +56,7 @@ fun TODOTheme(
     }*/
 
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,

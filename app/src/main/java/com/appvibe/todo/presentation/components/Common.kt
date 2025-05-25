@@ -1,5 +1,6 @@
-package com.appvibe.todo.presentation
+package com.appvibe.todo.presentation.components
 
+import android.app.Activity
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,26 +16,28 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import com.appvibe.todo.R
 import com.appvibe.todo.ui.theme.Black90
 import com.appvibe.todo.ui.theme.Gray60
@@ -227,6 +230,25 @@ fun DividerWithText(modifier: Modifier) {
 }
 
 @Composable
+fun ChangeStatusBarIconsColor(darkIcons: Boolean) {
+    val context = LocalContext.current
+    val view = LocalView.current
+
+    // Check if the Composable is running in Preview mode
+    if (!view.isInEditMode) {
+        // Runtime: Change status bar icon colors
+        if (context is Activity) {
+            SideEffect {
+                val window = context.window
+                val insetsController = WindowCompat.getInsetsController(window, view)
+                insetsController.isAppearanceLightStatusBars = darkIcons
+            }
+        }
+    }
+}
+
+
+@Composable
 @Preview
 fun PreviewEmailInputField() {
     TODOTheme {
@@ -257,6 +279,8 @@ fun PreviewPasswordInputField() {
     }
 
 }
+
+
 
 @Composable
 @Preview

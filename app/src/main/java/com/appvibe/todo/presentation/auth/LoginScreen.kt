@@ -39,9 +39,9 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.appvibe.todo.R
-import com.appvibe.todo.presentation.DividerWithText
-import com.appvibe.todo.presentation.EmailInputField
-import com.appvibe.todo.presentation.PasswordInputField
+import com.appvibe.todo.presentation.components.DividerWithText
+import com.appvibe.todo.presentation.components.EmailInputField
+import com.appvibe.todo.presentation.components.PasswordInputField
 import com.appvibe.todo.ui.theme.Dimens
 import com.appvibe.todo.ui.theme.Purple60
 import com.appvibe.todo.ui.theme.TODOTheme

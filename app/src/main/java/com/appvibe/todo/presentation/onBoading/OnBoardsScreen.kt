@@ -37,7 +37,7 @@ import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import com.appvibe.todo.R
-import com.appvibe.todo.presentation.TextButton
+import com.appvibe.todo.presentation.components.TextButton
 
 @Composable
 fun BaseScreen(navController: NavController, content: @Composable (modifier: Modifier) -> Unit) {

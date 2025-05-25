@@ -22,12 +22,15 @@
     <string name="txt_login">Login</string>
     <string name="txt_register">Register</string>
     <string name="txt_index">Index</string>
+    <string name="txt_what_do_you_want_today">What do you want to do today?</string>
+    <string name="txt_add_your_task">Tap + to add your tasks</string>
     <string name="action_login_with_google">Login With Google</string>"
     <string name="action_login_with_apple">Login With Apple</string>"
     <string name="action_do_not_have_account">Don\'t have an account?</string>"
     <string name="action_register">Register</string>
     <string name="action_register_with_google">Register With Google</string>"
     <string name="action_register_with_apple">Register With Apple</string>"
+    <string name="action_add">Add</string>
     <string name="action_index">Index</string>
     <string name="action_calender">Calendar</string>
     <string name="action_focus">Focus</string>
