@@ -1,6 +1,5 @@
 package com.appvibe.todo.presentation.components
 
-import android.R.attr.text
 import android.app.Activity
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
@@ -13,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -21,13 +21,10 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,8 +34,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusManager
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalView
@@ -47,7 +45,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,7 +53,6 @@ import com.appvibe.todo.R
 import com.appvibe.todo.ui.theme.Black90
 import com.appvibe.todo.ui.theme.Gray60
 import com.appvibe.todo.ui.theme.TODOTheme
-import com.appvibe.todo.ui.theme.Violet
 import com.appvibe.todo.ui.theme.White80
 import com.appvibe.todo.ui.theme.White87
 
@@ -269,11 +265,17 @@ fun EditTaskField(
     txtValue: String,
     focusManager: FocusManager,
     placeHolder: Int,
+    isFocusable: Boolean = false,
     onValueChange: (String) -> Unit,
 ) {
 
-    var isFocused by remember {
-        mutableStateOf(false)
+    val focusRequester = remember { FocusRequester() }
+    var isFocused by remember { mutableStateOf(false) }
+
+    LaunchedEffect(isFocusable) {
+        if (isFocusable) {
+            focusRequester.requestFocus()
+        }
     }
 
     BasicTextField(
@@ -281,8 +283,9 @@ fun EditTaskField(
         onValueChange = { onValueChange },
         modifier = Modifier
             .fillMaxWidth()
-            .height(50.dp)
-            .padding(6.dp)
+            .height(45.dp)
+            .padding(horizontal = 6.dp)
+            .focusRequester(focusRequester)
             .onFocusChanged {
                 isFocused = it.isFocused
             }
@@ -292,10 +295,11 @@ fun EditTaskField(
                     shape = RoundedCornerShape(4.dp)
                 ) else Modifier
             ),
-        textStyle = MaterialTheme.typography.titleMedium.copy(
+        textStyle = MaterialTheme.typography.titleSmall.copy(
             color = MaterialTheme.colorScheme.onBackground,
-            textAlign = TextAlign.Start
-        ),
+            textAlign = TextAlign.Start,
+
+            ),
         singleLine = true,
         maxLines = 1,
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -308,12 +312,16 @@ fun EditTaskField(
             focusManager.moveFocus(focusDirection = FocusDirection.Down)
         }),
         decorationBox = { innerTextField ->
-            if (txtValue.isEmpty() && !isFocused) {
+            if (txtValue.isEmpty()) {
                 Text(
                     text = stringResource(placeHolder),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 6.dp)
+                        .wrapContentHeight(align = Alignment.CenterVertically),
                     textAlign = TextAlign.Start,
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Gray60
                 )
             }
         }

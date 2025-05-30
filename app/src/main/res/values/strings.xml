@@ -37,6 +37,7 @@
     <string name="action_Profile">Profile</string>
     <string name="txt_already_have_account">Already have an account?</string>
     <string name="txt_add_task">Add Task</string>
+    <string name="txt_title">Title</string>
     <string name="txt_description">Description</string>
 
 </resources>
