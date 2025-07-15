@@ -39,5 +39,9 @@
     <string name="txt_add_task">Add Task</string>
     <string name="txt_title">Title</string>
     <string name="txt_description">Description</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_choose_date">Choose Date</string>
+    <string name="action_save">Save</string>
+    <string name="txt_choose_time">Choose Time</string>
 
 </resources>

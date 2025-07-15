@@ -1,20 +1,24 @@
 package com.appvibe.todo.presentation.dashBoard.index.addTask
 
-import androidx.annotation.DrawableRes
+import android.icu.util.Calendar
+import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
@@ -31,14 +35,19 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import com.appvibe.todo.R
+import com.appvibe.todo.presentation.components.DatePickerModal
 import com.appvibe.todo.presentation.components.EditTaskField
-import com.appvibe.todo.ui.theme.Dimens
+import com.appvibe.todo.presentation.components.TimePickerModal
 import com.appvibe.todo.ui.theme.TODOTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddTaskDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
 
     val focusManager = LocalFocusManager.current
+    var isDatePickerDialogVisible by remember { mutableStateOf(false) }
+    var isTimePickerDialogVisible by remember { mutableStateOf(false) }
+    val calendar = Calendar.getInstance()
 
     Dialog(
         onDismissRequest = onDismiss,
@@ -158,7 +167,12 @@ fun AddTaskDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
                     Image(
                         painter = painterResource(R.drawable.ic_add_task),
                         contentDescription = "Timer",
-                        modifier = Modifier.layoutId("addTask"),
+                        modifier = Modifier
+                            .layoutId("addTask")
+                            .clickable(enabled = true, onClick = {
+                                isDatePickerDialogVisible = !isDatePickerDialogVisible
+                            }
+                            ),
                         alignment = Alignment.Center
                     )
                 }
@@ -166,6 +180,27 @@ fun AddTaskDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
 
         }
     }
+
+    if (isDatePickerDialogVisible) {
+
+        DatePickerModal(onDismiss = {
+            isDatePickerDialogVisible = false
+        }, onDateSelected = { date ->
+            isTimePickerDialogVisible = !isTimePickerDialogVisible
+            isDatePickerDialogVisible = false
+            Log.d("TAG", "AddTaskDialog: $date")
+        })
+    }
+
+    if (isTimePickerDialogVisible) {
+        TimePickerModal(onDismiss = {
+            isTimePickerDialogVisible = false
+        }, onTimeSelected = { timePickerState ->
+            Log.d("TAG", "AddTaskDialog: ${timePickerState.hour}")
+            isTimePickerDialogVisible = false
+        })
+    }
+
 
 }
 
