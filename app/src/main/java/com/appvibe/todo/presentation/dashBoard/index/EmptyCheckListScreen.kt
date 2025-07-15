@@ -54,7 +54,6 @@ fun EmptyCheckListScreen(paddingValues: PaddingValues) {
             textAlign = TextAlign.Center
         )
 
-
     }
 }
 
