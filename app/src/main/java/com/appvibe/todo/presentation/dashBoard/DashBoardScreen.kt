@@ -1,6 +1,5 @@
 package com.appvibe.todo.presentation.dashBoard
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,7 +27,8 @@ import androidx.navigation.compose.rememberNavController
 import com.appvibe.todo.R
 import com.appvibe.todo.presentation.components.BottomAppBarWithCenterFab
 import com.appvibe.todo.presentation.components.ChangeStatusBarIconsColor
-import com.appvibe.todo.presentation.dashBoard.index.EmptyCheckListScreen
+import com.appvibe.todo.presentation.dashBoard.index.EmptyScreen
+import com.appvibe.todo.presentation.dashBoard.index.ListScreen
 import com.appvibe.todo.ui.theme.TODOTheme
 
 @Composable
@@ -51,7 +51,8 @@ fun Home(navController: NavHostController) {
         }, topBar = {
             Toolbar()
         }) { innerPadding ->
-        EmptyCheckListScreen(paddingValues = innerPadding)
+//        EmptyScreen(paddingValues = innerPadding)
+        ListScreen(paddingValues = innerPadding)
 
     }
 

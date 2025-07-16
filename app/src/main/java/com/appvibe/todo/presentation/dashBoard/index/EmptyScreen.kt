@@ -22,7 +22,7 @@ import com.appvibe.todo.R
 import com.appvibe.todo.ui.theme.TODOTheme
 
 @Composable
-fun EmptyCheckListScreen(paddingValues: PaddingValues) {
+fun EmptyScreen(paddingValues: PaddingValues) {
     Column(
         modifier = Modifier
             .padding(paddingValues)
@@ -61,7 +61,7 @@ fun EmptyCheckListScreen(paddingValues: PaddingValues) {
 @Composable
 fun PreviewIndexScreen() {
     TODOTheme {
-        EmptyCheckListScreen(PaddingValues())
+        EmptyScreen(PaddingValues())
     }
 
 }

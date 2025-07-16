@@ -43,5 +43,6 @@
     <string name="action_choose_date">Choose Date</string>
     <string name="action_save">Save</string>
     <string name="txt_choose_time">Choose Time</string>
+    <string name="txt_search_task">Search for your task…</string>
 
 </resources>
