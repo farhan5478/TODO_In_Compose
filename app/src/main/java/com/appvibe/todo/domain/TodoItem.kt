@@ -4,7 +4,7 @@ import java.sql.Date
 
 data class TodoItem(
     val id: Long,
-    val taskName: String,
+    val taskDescription: String,
     val priority: Int,
     val category: Category,
     val createdDate: Date,

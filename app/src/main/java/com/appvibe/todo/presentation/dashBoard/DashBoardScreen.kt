@@ -27,7 +27,6 @@ import androidx.navigation.compose.rememberNavController
 import com.appvibe.todo.R
 import com.appvibe.todo.presentation.components.BottomAppBarWithCenterFab
 import com.appvibe.todo.presentation.components.ChangeStatusBarIconsColor
-import com.appvibe.todo.presentation.dashBoard.index.EmptyScreen
 import com.appvibe.todo.presentation.dashBoard.index.ListScreen
 import com.appvibe.todo.ui.theme.TODOTheme
 
