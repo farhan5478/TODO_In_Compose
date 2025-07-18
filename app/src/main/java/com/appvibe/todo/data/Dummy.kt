@@ -22,6 +22,8 @@ object Dummy {
             Category(3, "Study", 0xFFFFF59D.toInt(), R.drawable.ic_tag),
             Category(4, "Shopping", 0xFFA5D6A7.toInt(), R.drawable.ic_back),
             Category(5, "Fitness", 0xFFEF9A9A.toInt(), R.drawable.ic_add_task),
+            Category(6, "Fitness", 0xFFEF9A9A.toInt(), R.drawable.ic_add_task),
+            Category(7, "Fitness", 0xFFEF9A9A.toInt(), R.drawable.ic_add_task),
         )
     }
 
