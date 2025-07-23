@@ -8,8 +8,8 @@
     <string name="txt_organize_des">You can organize your daily tasks by adding your tasks into separate categories</string>
     <string name="txt_welcome_todo">Welcome to UpTodo</string>
     <string name="txt_login_to_account">Please login to your account or create new account to continue</string>
-   <string name="txt_enter_your_user_name">Enter your Username</string>
-   <string name="txt_enter_your_password">Enter your Password</string>
+    <string name="txt_enter_your_user_name">Enter your Username</string>
+    <string name="txt_enter_your_password">Enter your Password</string>
     <string name="action_skip">SKIP</string>
     <string name="action_back">BACK</string>
     <string name="action_next">NEXT</string>"
@@ -44,5 +44,11 @@
     <string name="action_save">Save</string>
     <string name="txt_choose_time">Choose Time</string>
     <string name="txt_search_task">Search for your task…</string>
+    <string name="txt_create_category">Create new category</string>
+    <string name="txt_category_name">Category name :</string>
+    <string name="txt_enter_category_name">Enter category name</string>"
+    <string name="txt_category_icon">Category Icon:</string>
+    <string name="txt_icon_from_lib">Choose icon from library</string>
+    <string name="txt_category_color">Category color:</string>
 
 </resources>
