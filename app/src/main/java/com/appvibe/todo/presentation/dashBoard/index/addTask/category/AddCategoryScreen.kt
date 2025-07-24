@@ -56,31 +56,7 @@ fun AddNewCategoryScreen(onCancel: () -> Unit, onCreateCategory: () -> Unit) {
         Color(0xFFF06292)
     )
 
-    var iconsList by remember { mutableStateOf(arrayListOf(
-        R.drawable.ic_category_work,
-        R.drawable.ic_category_home,
-        R.drawable.ic_category_shopping,
-        R.drawable.ic_category_groceries,
-        R.drawable.ic_category_personal,
-        R.drawable.ic_category_health,
-        R.drawable.ic_category_fitness,
-        R.drawable.ic_category_study,
-        R.drawable.ic_category_finance,
-        R.drawable.ic_category_travel,
-        R.drawable.ic_category_family,
-        R.drawable.ic_category_friends,
-        R.drawable.ic_category_birthday,
-        R.drawable.ic_category_event,
-        R.drawable.ic_category_music,
-        R.drawable.ic_category_food,
-        R.drawable.ic_category_pet,
-        R.drawable.ic_category_car,
-        R.drawable.ic_category_bills,
-        R.drawable.ic_category_cleaning,
-        R.drawable.ic_category_gift,
-        R.drawable.ic_category_movie,
-        R.drawable.ic_category_reading
-    )) }
+   
 
     var showCategoryIconDialog by remember { mutableStateOf(false) }
 
